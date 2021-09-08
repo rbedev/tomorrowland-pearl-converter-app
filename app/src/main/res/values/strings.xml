@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tomorrowland Pearl Converter</string>
+    <string name="tab_text_1">TML Belgium</string>
+    <string name="tab_text_2">TML Winter</string>
+    <string name="_2019_reference_prices">2019 Reference prices</string>
+    <string name="_2018_reference_prices">2018 Reference prices</string>
+    <string name="convert">Convert</string>
+</resources>

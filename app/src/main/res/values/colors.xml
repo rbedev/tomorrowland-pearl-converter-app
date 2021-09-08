@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EAEAEA</color>
+    <color name="colorPrimaryDark">#EAEAEA</color>
+    <color name="colorAccent">#EAEAEA</color>
+    <color name="colorBackground">#EAEAEA</color>
+    <color name="colorTMLBelgiumLight">#D63A76</color>
+    <color name="colorTMLBelgiumDark">#8C0038</color>
+    <color name="colorTMLWinterLight">#439CD4</color>
+    <color name="colorTMLWinterDark">#135DA4</color>
+</resources>
