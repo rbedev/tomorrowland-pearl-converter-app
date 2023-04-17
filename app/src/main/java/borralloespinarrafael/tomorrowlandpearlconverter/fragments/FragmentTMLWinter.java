@@ -1,8 +1,8 @@
 package borralloespinarrafael.tomorrowlandpearlconverter.fragments;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import borralloespinarrafael.tomorrowlandpearlconverter.R;
-import borralloespinarrafael.tomorrowlandpearlconverter.activities.PricesBelgiumActivity;
 import borralloespinarrafael.tomorrowlandpearlconverter.activities.PricesWinterActivity;
 import borralloespinarrafael.tomorrowlandpearlconverter.model.TomorrowlandPearlConverter;
 

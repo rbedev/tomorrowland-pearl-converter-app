@@ -2,7 +2,7 @@ package borralloespinarrafael.tomorrowlandpearlconverter.activities;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ExpandableListView;
 
 import java.util.ArrayList;
@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import borralloespinarrafael.tomorrowlandpearlconverter.R;
-import borralloespinarrafael.tomorrowlandpearlconverter.adapter.ExpandableListAdapterBelgium;
 import borralloespinarrafael.tomorrowlandpearlconverter.adapter.ExpandableListAdapterWinter;
 
 public class PricesWinterActivity extends AppCompatActivity {
