@@ -1,9 +1,6 @@
 package borralloespinarrafael.tomorrowlandpearlconverter.adapter;
 
 
-import java.util.HashMap;
-import java.util.List;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -12,13 +9,16 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.List;
+
 import borralloespinarrafael.tomorrowlandpearlconverter.R;
 
 public class ExpandableListAdapterBelgium extends BaseExpandableListAdapter {
 
-    private Context _context;
-    private List<String> _listDataHeader;
-    private HashMap<String, List<String>> _listDataChild;
+    private final Context _context;
+    private final List<String> _listDataHeader;
+    private final HashMap<String, List<String>> _listDataChild;
 
     public ExpandableListAdapterBelgium(Context context, List<String> listDataHeader,
                                         HashMap<String, List<String>> listChildData) {

@@ -1,9 +1,11 @@
 package borralloespinarrafael.tomorrowlandpearlconverter.activities;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ExpandableListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,18 +21,16 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prices_belgium);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.setContentView(R.layout.activity_prices_belgium);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         expListView = findViewById(R.id.expandableListView);
-
         prepareListData();
-
         listAdapter = new ExpandableListAdapterBelgium(this, listDataHeader, listDataChild);
-
         expListView.setAdapter(listAdapter);
     }
 
@@ -39,7 +39,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
         listDataChild = new HashMap<>();
 
         listDataHeader.add("Drinks");
-        List<String> drinks =  createListDrinks();
+        List<String> drinks = createListDrinks();
         listDataChild.put(listDataHeader.get(0), drinks);
 
         listDataHeader.add("Cocktails");
@@ -135,7 +135,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(23), sandwiches);
 
         listDataHeader.add("Vegan food");
-        List<String> veganFood = new ArrayList<String>();
+        List<String> veganFood = new ArrayList<>();
         veganFood.add("-Veggie Burger           8.5");
         listDataChild.put(listDataHeader.get(24), veganFood);
 
@@ -174,7 +174,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListChargePhone() {
-        List<String> chargePhone = new ArrayList<String>();
+        List<String> chargePhone = new ArrayList<>();
         chargePhone.add("Unlimited phone charging");
         chargePhone.add("-6 Pearls service fee");
         chargePhone.add("-10 Pearls deposit");
@@ -190,7 +190,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListCarrefour() {
-        List<String> carrefour = new ArrayList<String>();
+        List<String> carrefour = new ArrayList<>();
         carrefour.add("-1 Bottle of water       1.6 (€!!)");
         carrefour.add("-6 Bottles of water     9.6 (€!!)");
 
@@ -198,7 +198,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListDonuteria() {
-        List<String> donuteria = new ArrayList<String>();
+        List<String> donuteria = new ArrayList<>();
         donuteria.add("-Donut toffee                           3.5");
         donuteria.add("-Donut pistache                       3.5");
         donuteria.add("-Donut strawberry                   3.5");
@@ -208,7 +208,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListBakery() {
-        List<String> bakery = new ArrayList<String>();
+        List<String> bakery = new ArrayList<>();
         bakery.add("-Croissant                         1.5");
         bakery.add("-Pain au chocolat            1.5");
         bakery.add("-Croissant Cheese            2");
@@ -216,9 +216,9 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListIceCreamAndPancakes() {
-        List<String> iceCreamAndPancakes = new ArrayList<String>();
+        List<String> iceCreamAndPancakes = new ArrayList<>();
         iceCreamAndPancakes.add("--Home made ice cream" + "\n"
-                +"Flavour : Vanilla - chocolate");
+                + "Flavour : Vanilla - chocolate");
         iceCreamAndPancakes.add("-1 Scoop         2");
         iceCreamAndPancakes.add("-2 Scoop         2.75");
         iceCreamAndPancakes.add("-3 Scoop         3.5");
@@ -241,29 +241,29 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListSmoothies() {
-        List<String> smoothies = new ArrayList<String>();
+        List<String> smoothies = new ArrayList<>();
         smoothies.add("-Super smoothie                                    4.5" + "\n"
-        +"Ingredients: strawberry, banana & orange");
+                + "Ingredients: strawberry, banana & orange");
 
         smoothies.add("-Tropical smoothie                                4.5" + "\n"
-                +"Ingredients: pineapple, mango & passion fruit");
+                + "Ingredients: pineapple, mango & passion fruit");
 
         smoothies.add("-Refresher                                               4.5" + "\n"
-                +"Ingredients: apple, cucumber, lime & mint");
+                + "Ingredients: apple, cucumber, lime & mint");
 
         smoothies.add("-Orange juice                                          4.5");
 
         smoothies.add("-Protein smoothie red                           4.5" + "\n"
-                +"Ingredients: Whey, soy milk, strawberry & raspberry");
+                + "Ingredients: Whey, soy milk, strawberry & raspberry");
 
         smoothies.add("-Protein smoothie banana                    4.5" + "\n"
-                +"Ingredients: Whey, soy milk, banana & pure chocolate");
+                + "Ingredients: Whey, soy milk, banana & pure chocolate");
 
         smoothies.add("-Tropical breakfast bowl                        6" + "\n"
-                +"Ingredients: Mango, pineapple, passion fruit, nuts & granola");
+                + "Ingredients: Mango, pineapple, passion fruit, nuts & granola");
 
         smoothies.add("-Breakfast bowl red fruit                        6" + "\n"
-                +"Ingredients: strawberry, raspberry, blueberry, nuts & granola");
+                + "Ingredients: strawberry, raspberry, blueberry, nuts & granola");
 
         smoothies.add("-Fruit salad                                                5");
 
@@ -279,7 +279,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListSandwiches() {
-        List<String> sandwiches = new ArrayList<String>();
+        List<String> sandwiches = new ArrayList<>();
         sandwiches.add("-Hummus sandwich          4.5");
         sandwiches.add("-Croque classic                  3");
         sandwiches.add("-Club sandwich                  4");
@@ -288,7 +288,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListFrozenYogurt() {
-        List<String> frozenYogurt = new ArrayList<String>();
+        List<String> frozenYogurt = new ArrayList<>();
         frozenYogurt.add("-Frozen yogurt normal           4.75");
         frozenYogurt.add("-Frozen yogurt big                  5.75");
         frozenYogurt.add("-Breakfast cup TML                7");
@@ -298,7 +298,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListNoodleBurger() {
-        List<String> noodleBurger = new ArrayList<String>();
+        List<String> noodleBurger = new ArrayList<>();
         noodleBurger.add("-Feeling veggie           6.5");
         noodleBurger.add("-Classic beef               6.75");
         noodleBurger.add("-Big chicken                 7");
@@ -307,15 +307,15 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListWrap() {
-        List<String> wrap = new ArrayList<String>();
+        List<String> wrap = new ArrayList<>();
         wrap.add("-Wrap                 7" + "\n"
-                +"Ingredients: Bacon, chicken, cream cheese and sweet chilli jam");
+                + "Ingredients: Bacon, chicken, cream cheese and sweet chilli jam");
 
         return wrap;
     }
 
     private List<String> createListHamburgerDreamville() {
-        List<String> hamburgerDreamville = new ArrayList<String>();
+        List<String> hamburgerDreamville = new ArrayList<>();
         hamburgerDreamville.add("-Breakfast burger                                  6");
         hamburgerDreamville.add("-Black aberdeen burger                        7");
         hamburgerDreamville.add("-Black aberdeen cheese burger          8");
@@ -325,7 +325,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListWaffles() {
-        List<String> waffles = new ArrayList<String>();
+        List<String> waffles = new ArrayList<>();
         waffles.add("-Plain waffle                            2.75");
         waffles.add("-Waffle with caramel              4");
         waffles.add("-Waffle with cream                 4.25");
@@ -343,7 +343,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListItalianSandwiches() {
-        List<String> italianSandwiches = new ArrayList<String>();
+        List<String> italianSandwiches = new ArrayList<>();
         italianSandwiches.add("-Sandwich mozarella        5.25");
         italianSandwiches.add("-Sandwich parma               6.5");
         italianSandwiches.add("-Sandwich tuna                  6.5");
@@ -352,7 +352,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListPizza() {
-        List<String> pizzas = new ArrayList<String>();
+        List<String> pizzas = new ArrayList<>();
         pizzas.add("-Pizza Margheritta         4.5");
         pizzas.add("-Pizza Carpaccio            5.5");
 
@@ -360,7 +360,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListAsianFood() {
-        List<String> asianFood = new ArrayList<String>();
+        List<String> asianFood = new ArrayList<>();
         asianFood.add("-Spring rolls                                     4");
         asianFood.add("-Chicken karaage                            5");
         asianFood.add("-Wok noodles                                   8");
@@ -371,7 +371,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListTapas() {
-        List<String> tapas = new ArrayList<String>();
+        List<String> tapas = new ArrayList<>();
         tapas.add("-Tapas shrimps           7.5");
         tapas.add("-Tapas España            6.5");
         tapas.add("-Patatas bravas           3.5");
@@ -380,7 +380,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListPaella() {
-        List<String> paella = new ArrayList<String>();
+        List<String> paella = new ArrayList<>();
         paella.add("-Paella                  7");
         paella.add("-Calamaris           4.75");
 
@@ -388,7 +388,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListGrilledChickenBurger() {
-        List<String> grilledChickenBurger = new ArrayList<String>();
+        List<String> grilledChickenBurger = new ArrayList<>();
         grilledChickenBurger.add("-Breakfast burger                                    6.5");
         grilledChickenBurger.add("-Bacon/Black pepper burger                 6.5");
         grilledChickenBurger.add("-Homemade crispy chicken sticks       5.5");
@@ -397,7 +397,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListSushi() {
-        List<String> sushi = new ArrayList<String>();
+        List<String> sushi = new ArrayList<>();
         sushi.add("-6pcs Sushi                                   11");
         sushi.add("-6pcs Sushi + TML cocktail       15");
 
@@ -405,7 +405,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListBelgianFriesDreamville() {
-        List<String> belgianFries = new ArrayList<String>();
+        List<String> belgianFries = new ArrayList<>();
         belgianFries.add("-Belgian fries                                   4");
         belgianFries.add("-Belgian fries + Sauce                    4.5");
         belgianFries.add("-Flemish beefstew                          3");
@@ -418,7 +418,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListPasta() {
-        List<String> pasta = new ArrayList<String>();
+        List<String> pasta = new ArrayList<>();
         pasta.add("-Pasta bolognaise             5.25");
         pasta.add("-Pasta pesto                       5.25");
         pasta.add("-Ravioli                                 5.5" + "\n" +
@@ -428,7 +428,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListDreamvilleMarket() {
-        List<String> dreamvilleMarket = new ArrayList<String>();
+        List<String> dreamvilleMarket = new ArrayList<>();
         dreamvilleMarket.add("-Band aid                                4");
         dreamvilleMarket.add("-Chewing gum                       1");
         dreamvilleMarket.add("-Condoms                               3");
@@ -445,12 +445,11 @@ public class PricesBelgiumActivity extends AppCompatActivity {
         dreamvilleMarket.add("-Tampons (2)                          1");
 
 
-
         return dreamvilleMarket;
     }
 
     private List<String> createListNachos() {
-        List<String> nachos = new ArrayList<String>();
+        List<String> nachos = new ArrayList<>();
         nachos.add("-Willy nacho classic                           4.5");
         nachos.add("-Willy nacho mexican taste              5.5");
         nachos.add("-Add fresh cilantro                              1");
@@ -461,7 +460,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListBlackAngusBurger() {
-        List<String> blackAngusBurgers = new ArrayList<String>();
+        List<String> blackAngusBurgers = new ArrayList<>();
         blackAngusBurgers.add("-Woeste burger                                  6.5");
         blackAngusBurgers.add("-Woeste burger hot                            7");
 
@@ -469,7 +468,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListBallsAndGlory() {
-        List<String> ballsAndGlory = new ArrayList<String>();
+        List<String> ballsAndGlory = new ArrayList<>();
         ballsAndGlory.add("-Just the ball                                       6");
         ballsAndGlory.add("-Ball with salad                                   9.5");
         ballsAndGlory.add("-Ball with mashed potatoes             9.5");
@@ -478,13 +477,13 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListKebab() {
-        List<String> kebab = new ArrayList<String>();
+        List<String> kebab = new ArrayList<>();
         kebab.add("-Love tomorrow kebab             6.5");
         return kebab;
     }
 
     private List<String> createListVietnameseFood() {
-        List<String> vietnameseFood = new ArrayList<String>();
+        List<String> vietnameseFood = new ArrayList<>();
         vietnameseFood.add("-Beef stew with rice             8.75");
         vietnameseFood.add("-Curry tofu with rice             8.25");
 
@@ -492,7 +491,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListChickenHamburger() {
-        List<String> chickenHamburger = new ArrayList<String>();
+        List<String> chickenHamburger = new ArrayList<>();
         chickenHamburger.add("-Hamburger kukelecurrie             6");
         chickenHamburger.add("-Hamburger classico                    6");
 
@@ -500,7 +499,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListIceCreamAndSweets() {
-        List<String> iceCreamAndSweets = new ArrayList<String>();
+        List<String> iceCreamAndSweets = new ArrayList<>();
         iceCreamAndSweets.add("-Pancake                               3");
         iceCreamAndSweets.add("-Leonidas balotin                2.5");
         iceCreamAndSweets.add("-Ice cream 1 scoop             2");
@@ -514,7 +513,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
     }
 
     private List<String> createListBelgianFries() {
-        List<String> belgianFries = new ArrayList<String>();
+        List<String> belgianFries = new ArrayList<>();
         belgianFries.add("-Belgian fries                                 3.5");
         belgianFries.add("-Belgian fries + Sauce                 3.75");
         belgianFries.add("-Chicken on a stick                      2.25");
@@ -530,7 +529,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
 
     private List<String> createListCocktails() {
 
-        List<String> cocktails = new ArrayList<String>();
+        List<String> cocktails = new ArrayList<>();
         cocktails.add("--Tomorrowland cocktail Absolut vodka");
         cocktails.add("-Cucumber           7.5");
         cocktails.add("-Lime                     7.5");
@@ -567,7 +566,7 @@ public class PricesBelgiumActivity extends AppCompatActivity {
 
     private List<String> createListDrinks() {
         // Adding child data
-        List<String> drinks = new ArrayList<String>();
+        List<String> drinks = new ArrayList<>();
         drinks.add("-Jupiler                                                              2");
         drinks.add("-Jupiler XL                                                        3.75");
         drinks.add("-Hoegaarden Rosee                                        2");
@@ -600,17 +599,6 @@ public class PricesBelgiumActivity extends AppCompatActivity {
         drinks.add("-Beefeater gin + soft                                        6.75");
         drinks.add("");
         drinks.add("-Friendship cup holder                                     1");
-
-//        drinks.add("-Jupiler (Alluminium bottle)          3");
-//        drinks.add("-Leffe Blond             4");
-//        drinks.add("-Goose Island IPA        4");
-//        drinks.add("-Coca cola                2");
-//        drinks.add("-Coca cola light          2");
-//        drinks.add("-Coca zero                2");
-//        drinks.add("-Fanta orange             2");
-//        drinks.add("-Sprite zero              2");
-//        drinks.add("-Minute maid orange       2.5");
-//        drinks.add("-Nordic mist tonic        2");
 
         return drinks;
 

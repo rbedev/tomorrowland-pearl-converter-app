@@ -16,12 +16,11 @@ import borralloespinarrafael.tomorrowlandpearlconverter.R;
 
 public class ExpandableListAdapterWinter extends BaseExpandableListAdapter {
 
-    private Context _context;
-    private List<String> _listDataHeader;
-    private HashMap<String, List<String>> _listDataChild;
+    private final Context _context;
+    private final List<String> _listDataHeader;
+    private final HashMap<String, List<String>> _listDataChild;
 
-    public ExpandableListAdapterWinter(Context context, List<String> listDataHeader,
-                                       HashMap<String, List<String>> listChildData) {
+    public ExpandableListAdapterWinter(Context context, List<String> listDataHeader, HashMap<String, List<String>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -29,8 +28,7 @@ public class ExpandableListAdapterWinter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .get(childPosition);
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).get(childPosition);
     }
 
     @Override
@@ -39,14 +37,12 @@ public class ExpandableListAdapterWinter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition,
-                             boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         final String childText = (String) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
@@ -58,8 +54,7 @@ public class ExpandableListAdapterWinter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .size();
+        return this._listDataChild.get(this._listDataHeader.get(groupPosition)).size();
     }
 
     @Override
@@ -78,12 +73,10 @@ public class ExpandableListAdapterWinter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded,
-                             View convertView, ViewGroup parent) {
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String headerTitle = (String) getGroup(groupPosition);
         if (convertView == null) {
-            LayoutInflater infalInflater = (LayoutInflater) this._context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_group_winter, null);
         }
 

@@ -5,4 +5,7 @@
     <string name="_2019_reference_prices">2019 Reference prices</string>
     <string name="_2018_reference_prices">2018 Reference prices</string>
     <string name="convert">Convert</string>
+    <string name="from_selected_currency_to_pearls">From selected currency to Pearls</string>
+    <string name="from_pearls_to_selected_currency">From Pearls to selected currency</string>
+    <string name="_1_pearl_2_14">1 Pearl = 2.14€</string>
 </resources>

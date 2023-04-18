@@ -1,17 +1,14 @@
 package borralloespinarrafael.tomorrowlandpearlconverter.fragments;
 
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,8 +18,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import borralloespinarrafael.tomorrowlandpearlconverter.R;
@@ -30,44 +31,33 @@ import borralloespinarrafael.tomorrowlandpearlconverter.activities.PricesWinterA
 import borralloespinarrafael.tomorrowlandpearlconverter.model.TomorrowlandPearlConverter;
 
 
-public class FragmentTMLWinter  extends Fragment {
-
-    private Spinner spinnerCurrencies;
-
-    private ArrayList<String> arrayListCurrencies;
-    private ArrayAdapter<String> arrayAdapterCurrencies;
-
-    private Button buttonConvert;
-    private ImageButton buttonChangeConversion;
-
-    private Button buttonPrices;
-
-    private TextView textViewCriteria;
-
-    private EditText editTextQuantity;
-
-    private TextView textViewResult;
-
-    private TextView textViewPearlRate;
-
-    private MediaPlayer mMediaPlayer;
-
-    private boolean wrongQuantity = false;
-
-    private boolean longClick = false;
-
-    private static boolean fromPearlsToCurrency = true;
+public class FragmentTMLWinter extends Fragment {
 
     private static final double PEARL_EURO_RATIO = 2.1428571428571428;
+    private static boolean fromPearlsToCurrency = true;
+    private Spinner spinnerCurrencies;
+    private ArrayList<String> arrayListCurrencies;
+    private ArrayAdapter<String> arrayAdapterCurrencies;
+    private Button buttonConvert;
+    private ImageButton buttonChangeConversion;
+    private Button buttonPrices;
+    private TextView textViewCriteria;
+    private EditText editTextQuantity;
+    private TextView textViewResult;
+    private TextView textViewPearlRate;
+    private MediaPlayer mMediaPlayer;
+    private boolean wrongQuantity = false;
+    private boolean longClick = false;
 
-    public FragmentTMLWinter() {}
+    public FragmentTMLWinter() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tml_winter, container, false);
 
         textViewPearlRate = view.findViewById(R.id.textViewPearlRate);
-        textViewPearlRate.setText("1 Pearl = 2.14€");
+        textViewPearlRate.setText(R.string._1_pearl_2_14);
 
         textViewCriteria = view.findViewById(R.id.textViewCriteria);
 
@@ -85,65 +75,50 @@ public class FragmentTMLWinter  extends Fragment {
         fillSpinner();
         setSpinnerPopupSize();
 
-        buttonPrices.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity().getApplicationContext(), PricesWinterActivity.class);
-                startActivity(intent);
+        buttonPrices.setOnClickListener(view1 -> {
+            Intent intent = new Intent(requireActivity().getApplicationContext(), PricesWinterActivity.class);
+            startActivity(intent);
+        });
+
+        buttonChangeConversion.setOnClickListener(view12 -> {
+            if (fromPearlsToCurrency) {
+                textViewCriteria.setText(R.string.from_selected_currency_to_pearls);
+                fromPearlsToCurrency = false;
+            } else {
+                textViewCriteria.setText(R.string.from_pearls_to_selected_currency);
+                fromPearlsToCurrency = true;
             }
         });
 
-        buttonChangeConversion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (fromPearlsToCurrency){
-                    textViewCriteria.setText("From selected currency to Pearls");
-                    fromPearlsToCurrency = false;
-                }else {
-                    textViewCriteria.setText("From Pearls to selected currency");
-                    fromPearlsToCurrency = true;
+        buttonConvert.setOnClickListener(view13 -> {
+            if (checkCurrencyValue()) {
+                if (fromPearlsToCurrency) {
+                    convertToCurrency();
+                } else {
+                    convertToPearls();
+                }
+            } else {
+                if (!wrongQuantity) {
+                    Toast.makeText(requireActivity().getApplicationContext(), "If you try it again, DV&LM will visit you.", Toast.LENGTH_SHORT).show();
+                    wrongQuantity = true;
+                } else {
+                    Toast.makeText(requireActivity().getApplicationContext(), "I told you.", Toast.LENGTH_SHORT).show();
+                    playRandomSound();
                 }
             }
+
         });
 
-        buttonConvert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkCurrencyValue()){
-                    if(fromPearlsToCurrency){
-                        convertToCurrency();
-                    }else{
-                        convertToPearls();
-                    }
-                }else{
-                    if(!wrongQuantity){
-                        Toast.makeText(getActivity().getApplicationContext(), "If you try it again, DV&LM will visit you.", Toast.LENGTH_SHORT).show();
-                        wrongQuantity = true;
-                    }else{
-                        Toast.makeText(getActivity().getApplicationContext(), "I told you.", Toast.LENGTH_SHORT).show();
-                        playRandomSound();
-                    }
-                }
-
+        buttonConvert.setOnLongClickListener(v -> {
+            if (!longClick) {
+                Toast.makeText(requireActivity().getApplicationContext(), "Are you ready? Do it again.", Toast.LENGTH_SHORT).show();
+                longClick = true;
+            } else {
+                Toast.makeText(requireActivity().getApplicationContext(), "I told you.", Toast.LENGTH_SHORT).show();
+                playAreYouReadySound();
             }
-
-
+            return true;
         });
-
-        buttonConvert.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                if(!longClick){
-                    Toast.makeText(getActivity().getApplicationContext(), "Are you ready? Do it again.", Toast.LENGTH_SHORT).show();
-                    longClick=true;
-                }else{
-                    Toast.makeText(getActivity().getApplicationContext(), "I told you.", Toast.LENGTH_SHORT).show();
-                    playAreYouReadySound();
-                }
-                return true;
-            }
-        });
-
 
 
         return view;
@@ -157,18 +132,18 @@ public class FragmentTMLWinter  extends Fragment {
         try {
             Random rand = new Random();
             int n = rand.nextInt(5); // Gives n such that 0 <= n < 5
-            if(n==0){
+            if (n == 0) {
                 play(getActivity(), R.raw.dvlmsound0);
-            }else if(n==1){
+            } else if (n == 1) {
                 play(getActivity(), R.raw.dvlmsound1);
-            }else if(n==2){
+            } else if (n == 2) {
                 play(getActivity(), R.raw.dvlmsound2);
-            }else if(n==3){
+            } else if (n == 3) {
                 play(getActivity(), R.raw.dvlmsound3);
-            }else{
+            } else {
                 play(getActivity(), R.raw.dvlmsound4);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -199,21 +174,10 @@ public class FragmentTMLWinter  extends Fragment {
         try {
             String str = editTextQuantity.getText().toString();
             Log.d("content", str);
-            if(str.length()>=0) {
-                double quantity = Double.parseDouble(str);
-                if(quantity>0){
-                    return true;
-                }else{
-                    return false;
-                }
-
-            }else{
-                return false;
-            }
-
-
-        }catch (Exception e){
-            Log.d("Exception","Exception");
+            double quantity = Double.parseDouble(str);
+            return quantity > 0;
+        } catch (Exception e) {
+            Log.d("Exception", "Exception");
             return false;
         }
     }
@@ -222,7 +186,7 @@ public class FragmentTMLWinter  extends Fragment {
         double quantity = Double.parseDouble(editTextQuantity.getText().toString());
         double rate = Double.parseDouble(TomorrowlandPearlConverter.CURRENCIES_TO_EURO[spinnerCurrencies.getSelectedItemPosition()]);
 
-        double euros = quantity*rate;
+        double euros = quantity * rate;
         double result = euros / PEARL_EURO_RATIO;
 
 
@@ -234,7 +198,7 @@ public class FragmentTMLWinter  extends Fragment {
         double quantity = Double.parseDouble(editTextQuantity.getText().toString());
         double rate = Double.parseDouble(TomorrowlandPearlConverter.VALUES_FROM_EURO[spinnerCurrencies.getSelectedItemPosition()]);
 
-        double euros = quantity*PEARL_EURO_RATIO;
+        double euros = quantity * PEARL_EURO_RATIO;
         double result = euros * rate;
 
         textViewResult.setText(String.format("%.2f", result) + " " + spinnerCurrencies.getSelectedItem().toString().toLowerCase() + "s");
@@ -245,11 +209,9 @@ public class FragmentTMLWinter  extends Fragment {
     private void fillSpinner() {
         arrayListCurrencies = new ArrayList<>();
 
-        for (int i = 0; i < TomorrowlandPearlConverter.CURRENCIES.length; i++) {
-            arrayListCurrencies.add(TomorrowlandPearlConverter.CURRENCIES[i]);
-        }
+        Collections.addAll(arrayListCurrencies, TomorrowlandPearlConverter.CURRENCIES);
 
-        arrayAdapterCurrencies  = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_item, arrayListCurrencies);
+        arrayAdapterCurrencies = new ArrayAdapter<>(getActivity().getApplicationContext(), R.layout.spinner_item, arrayListCurrencies);
         spinnerCurrencies.setAdapter(arrayAdapterCurrencies);
         spinnerCurrencies.setSelection(0);
 
@@ -271,8 +233,8 @@ public class FragmentTMLWinter  extends Fragment {
 
             // Set popupWindow height to 500px
             popupWindow.setHeight(800);
-        }
-        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+        } catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException |
+                 IllegalAccessException e) {
             // silently fail...
         }
     }

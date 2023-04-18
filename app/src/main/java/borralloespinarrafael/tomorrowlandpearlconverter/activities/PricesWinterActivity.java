@@ -1,9 +1,11 @@
 package borralloespinarrafael.tomorrowlandpearlconverter.activities;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ExpandableListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,18 +21,16 @@ public class PricesWinterActivity extends AppCompatActivity {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prices_winter);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.setContentView(R.layout.activity_prices_winter);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         expListView = findViewById(R.id.expandableListView);
-
         prepareListData();
-
         listAdapter = new ExpandableListAdapterWinter(this, listDataHeader, listDataChild);
-
         expListView.setAdapter(listAdapter);
     }
 
@@ -39,11 +39,11 @@ public class PricesWinterActivity extends AppCompatActivity {
         listDataChild = new HashMap<>();
 
         listDataHeader.add("Beers");
-        List<String> beers =  createListBeers();
+        List<String> beers = createListBeers();
         listDataChild.put(listDataHeader.get(0), beers);
 
         listDataHeader.add("Soft drinks");
-        List<String> softDrinks =  createListSoftDrinks();
+        List<String> softDrinks = createListSoftDrinks();
         listDataChild.put(listDataHeader.get(1), softDrinks);
 
         listDataHeader.add("Cocktails");
@@ -64,7 +64,7 @@ public class PricesWinterActivity extends AppCompatActivity {
 
 
         listDataHeader.add("Hot drinks");
-        List<String> hotDrinks =  createListHotDrinks();
+        List<String> hotDrinks = createListHotDrinks();
         listDataChild.put(listDataHeader.get(6), hotDrinks);
 
 
@@ -130,7 +130,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListWine() {
-        List<String> wine = new ArrayList<String>();
+        List<String> wine = new ArrayList<>();
         wine.add("--White wine Apremont, Cuvée Nicolas");
         wine.add("-Glass 15cl                                                     3");
         wine.add("-Bottle 75cl                                                    18");
@@ -154,7 +154,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListChampagne() {
-        List<String> champagne = new ArrayList<String>();
+        List<String> champagne = new ArrayList<>();
         champagne.add("-Champagne G.H. Mumm 75cl                           48");
         champagne.add("-Champagne G.H. Mumm 1.5l Magnum           96");
         champagne.add("-Champagne Moët & Chandon 75cl                  52");
@@ -163,7 +163,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListLiquors() {
-        List<String> liquors = new ArrayList<String>();
+        List<String> liquors = new ArrayList<>();
         liquors.add("-Absolut Vodka 4cl                                             5");
         liquors.add("-Havana Club Especial Rum 4cl                       5");
         liquors.add("-Ballantine's Whisky 4cl                                     5");
@@ -176,7 +176,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListHotDrinks() {
-        List<String> hotDrinks = new ArrayList<String>();
+        List<String> hotDrinks = new ArrayList<>();
         hotDrinks.add("-Capuccino                                                      2.5");
         hotDrinks.add("-Coffee                                                             1.75");
         hotDrinks.add("-Coffee milk                                                     2");
@@ -190,7 +190,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListSoftDrinks() {
-        List<String> softDrinks = new ArrayList<String>();
+        List<String> softDrinks = new ArrayList<>();
         softDrinks.add("-Still water 33cl                                              1.5");
         softDrinks.add("-Pepsi / Pepsi Max 33cl                               1.75");
         softDrinks.add("-7UP / 7UP Free 33cl                                    1.75");
@@ -208,7 +208,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListHotSandwiches() {
-        List<String> hotSandwiches = new ArrayList<String>();
+        List<String> hotSandwiches = new ArrayList<>();
         hotSandwiches.add("-Panciotti                                                         3\n(with speck ham and italian cheese)");
         hotSandwiches.add("-Panciotti                                                         3\n(with ham and italian cheese)");
         hotSandwiches.add("-Focaccia                                                         4\n(ham and mozzarella)");
@@ -218,7 +218,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListSoup() {
-        List<String> ballsAndGlory = new ArrayList<String>();
+        List<String> ballsAndGlory = new ArrayList<>();
         ballsAndGlory.add("-Organic coral lentils and curry soup 33cl    3");
         ballsAndGlory.add("-Organic green soup 33cl                                3");
         ballsAndGlory.add("-Organic squash soup 33cl                             3");
@@ -226,7 +226,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListBallsAndGlory() {
-        List<String> ballsAndGlory = new ArrayList<String>();
+        List<String> ballsAndGlory = new ArrayList<>();
         ballsAndGlory.add("-Meatball pork                                                5\n(with raclette)");
         ballsAndGlory.add("-Meatball chicken                                          5\n(with mushrooms)");
         ballsAndGlory.add("-Meatball veggie                                            5\n(with arancini tomato mozzarella)");
@@ -236,7 +236,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListWaffles() {
-        List<String> waffles = new ArrayList<String>();
+        List<String> waffles = new ArrayList<>();
         waffles.add("-Waffle with sugar                                           3");
         waffles.add("-Waffle with nutella                                        3.5");
         waffles.add("-Waffle whipped cream                                 3.25");
@@ -244,13 +244,13 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListAsianFood() {
-        List<String> asianFood = new ArrayList<String>();
+        List<String> asianFood = new ArrayList<>();
         asianFood.add("-Noodle soup                                                     5");
         return asianFood;
     }
 
     private List<String> createListCheese() {
-        List<String> cheese = new ArrayList<String>();
+        List<String> cheese = new ArrayList<>();
         cheese.add("-Tartiflette Traditional                                   6\n(French roblochon cheese, gnocchi, ham, cream and onions)");
         cheese.add("-Tartiflette Vegetarian                                   6\n(French roblochon cheese, gnocchi, cream and onions)");
         cheese.add("-Big cheese platter                                        6");
@@ -259,14 +259,14 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListItalianFood() {
-        List<String> italianFood = new ArrayList<String>();
+        List<String> italianFood = new ArrayList<>();
         italianFood.add("-Pasta bolognaise                                      4.5");
         italianFood.add("-Mac'n Cheese                                            4.5");
         return italianFood;
     }
 
     private List<String> createListBurgers() {
-        List<String> burgers = new ArrayList<String>();
+        List<String> burgers = new ArrayList<>();
         burgers.add("-Traditional burger                                         6\n(Beef burger with blue cheese, BBQ sauce and bacon)");
         burgers.add("-Mountain burger                                           6\n(Beef burger with raclette cheese and BBQ sauce)");
 
@@ -274,7 +274,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListChickenBurgers() {
-        List<String> chickenBurgers = new ArrayList<String>();
+        List<String> chickenBurgers = new ArrayList<>();
         chickenBurgers.add("-Classic burger                                              5.5");
         chickenBurgers.add("-Bacon black pepper burger                       5.5");
         chickenBurgers.add("-Savoyard burger                                          5.5");
@@ -283,7 +283,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListCurry() {
-        List<String> curry = new ArrayList<String>();
+        List<String> curry = new ArrayList<>();
         curry.add("-Green Curry (with Vegetables)                    5");
         curry.add("-Curry Massaman (with Chicken)                 6");
         curry.add("-Curry Panag (with Shrimps)                         6.5");
@@ -293,7 +293,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListBelgianBeers() {
-        List<String> belgianBeers = new ArrayList<String>();
+        List<String> belgianBeers = new ArrayList<>();
         belgianBeers.add("-Leffe Blond 33cl                                                3");
         belgianBeers.add("-Leffe Ruby 33cl                                                 3");
         belgianBeers.add("-Hoegaardden White 33cl                                3");
@@ -304,7 +304,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListAmicorumStageBuffet() {
-        List<String> amicorumStageBuffet = new ArrayList<String>();
+        List<String> amicorumStageBuffet = new ArrayList<>();
         amicorumStageBuffet.add("-Lasagna (with beef)                                      10");
         amicorumStageBuffet.add("-Crozyflette                                                       9");
         amicorumStageBuffet.add("-Chicken (with mushrooms)                          8");
@@ -319,7 +319,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListNachos() {
-        List<String> nachos = new ArrayList<String>();
+        List<String> nachos = new ArrayList<>();
         nachos.add("-Normal nachos                                4.75");
         nachos.add("-Chilly nachos                                   6.75");
         nachos.add("-Chicken wings                                 4.75");
@@ -328,14 +328,14 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListRaclette() {
-        List<String> raclette = new ArrayList<String>();
+        List<String> raclette = new ArrayList<>();
         raclette.add("-Raclette Traditional                        6");
         raclette.add("-Raclette Vegetarian                        6");
         return raclette;
     }
 
     private List<String> createListBelgianFries() {
-        List<String> belgianFries = new ArrayList<String>();
+        List<String> belgianFries = new ArrayList<>();
         belgianFries.add("-Belgian fries                                                  3");
         belgianFries.add("-Belgian fries + Sauce                                  3.5");
         belgianFries.add("-Fricadelle                                                       2");
@@ -348,7 +348,7 @@ public class PricesWinterActivity extends AppCompatActivity {
 
     private List<String> createListCocktails() {
 
-        List<String> cocktails = new ArrayList<String>();
+        List<String> cocktails = new ArrayList<>();
         cocktails.add("--Mojito - Havana Club 3 Years 4cl");
         cocktails.add("-Lime                                                                   5.5");
         cocktails.add("-Mint                                                                    5.5");
@@ -368,7 +368,7 @@ public class PricesWinterActivity extends AppCompatActivity {
     }
 
     private List<String> createListBeers() {
-        List<String> beers = new ArrayList<String>();
+        List<String> beers = new ArrayList<>();
         beers.add("-Budweiser 33cl                                               2");
         beers.add("-Cubanisto 33cl                                               3");
         beers.add("-Corona 33.5cl                                                 3.25");
